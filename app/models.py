@@ -23,6 +23,13 @@ class Tasks(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    @classmethod
+    def get_tasks(cls):
+        return cls.query.all()
+
+    def __str__(self):
+        return self.description
+
 
 # class Users(db.Model):
 #     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
