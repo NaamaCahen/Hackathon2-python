@@ -7,8 +7,35 @@
 <body>
     <h1>My TODO LIST</h1>
     <form method="POST">
-        {{form.add_task_input()}}
+        {{ form.hidden_tag() }}
+
+        {{form.description(placeholder="description")}}
+
+        {{form.category(placeholder="category")}}
+
+        {{form.deadline.label}}
+        {{form.deadline()}}
+
+        {{form.is_urgent.label}}
+        {{form.is_urgent()}}
+
         {{form.add_button()}}
     </form>
+    <form>
+        {% for task in tasks%}
+        <div style="border: black 2px solid">
+            <input type="checkbox" name="isdone">
+            <p>{{task}}</p>
+            <p>category: {{task.category}}</p>
+            <p>deadline: {{task.deadline}}</p>
+            <p>urgency: {{task.is_urgent}}</p>
+        </div>
+
+        {% endfor %}
+
+    </form>
+
+
+
 </body>
 </html>
