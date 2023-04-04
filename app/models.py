@@ -23,6 +23,23 @@ class Tasks(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    @classmethod
+    def get_tasks(cls):
+        return cls.query.all()
+
+    @classmethod
+    def set_task_as_complete(cls,task_id):
+        cls.query.get(task_id).is_done = True
+        db.session.commit()
+
+    @classmethod
+    def delete_task(cls, task_id):
+        cls.query.filter_by(task_id=task_id).delete()
+        db.session.commit()
+
+    def __str__(self):
+        return self.description
+
 
 # class Users(db.Model):
 #     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
