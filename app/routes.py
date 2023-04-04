@@ -15,3 +15,8 @@ def home():
         return flask.redirect('/')
     tasks = Tasks.get_tasks()
     return flask.render_template('index.html', form=form, tasks=tasks)
+
+@flask_app.route('/complete/<int:task_id>')
+def complete(task_id):
+    Tasks.set_task_as_complete(task_id)
+    return flask.redirect('/')

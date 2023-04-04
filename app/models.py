@@ -27,6 +27,11 @@ class Tasks(db.Model):
     def get_tasks(cls):
         return cls.query.all()
 
+    @classmethod
+    def set_task_as_complete(cls,task_id):
+        Tasks.query.get(task_id).is_done = True
+        db.session.commit()
+
     def __str__(self):
         return self.description
 

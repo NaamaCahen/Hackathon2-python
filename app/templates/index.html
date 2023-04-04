@@ -24,11 +24,11 @@
     <form>
         {% for task in tasks%}
         <div style="border: black 2px solid">
-            <input type="checkbox" name="isdone">
             <p>{{task}}</p>
             <p>category: {{task.category}}</p>
             <p>deadline: {{task.deadline}}</p>
             <p>urgency: {{task.is_urgent}}</p>
+            <a href="{{url_for('complete',task_id=task.task_id)}}">DONE?</a>
         </div>
 
         {% endfor %}
