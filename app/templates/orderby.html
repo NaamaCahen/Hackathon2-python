@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>order by</title>
+</head>
+<body>
+    {%extends "index.html" %}
+
+    {%block heading%}
+        {{ super() }}
+        <h2>ordered by: {{order}}</h2>
+    {% endblock %}
+
+
+    {%block addTask%}
+    {%endblock%}
+
+    {% block listOfTasks%}
+        {{ super() }}
+    {% endblock %}
+
+    {%block home%}
+        <a href="{{url_for('home')}}">BACK HOME</a>
+    {% endblock %}
+
+</body>
+</html>
