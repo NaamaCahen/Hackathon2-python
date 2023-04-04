@@ -20,9 +20,11 @@
         {{form.deadline()}}
 
         {{form.is_urgent.label}}
-        {{form.is_urgent()}}
+        {{form.is_urgent(min=0, max=10)}}
 
         {{form.add_button()}}
+
+        <p>{% for error in form.errors.items() %} {{ error[1][0] }} {% endfor %}</p>
     </form>{% endblock %}
     <form>
         {%block listOfTasks%}
