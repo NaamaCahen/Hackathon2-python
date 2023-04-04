@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>order by</title>
 </head>
 <body>
     {%extends "index.html" %}
@@ -19,5 +19,10 @@
     {% block listOfTasks%}
         {{ super() }}
     {% endblock %}
+
+    {%block home%}
+        <a href="{{url_for('home')}}">BACK HOME</a>
+    {% endblock %}
+
 </body>
 </html>

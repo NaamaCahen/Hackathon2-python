@@ -46,3 +46,9 @@ def show_done_tasks():
 def order_by_urgency():
     tasks = Tasks.get_todo_tasks().order_by(Tasks.is_urgent.desc())
     return flask.render_template('orderby.html', tasks=tasks, order='urgency')
+
+
+@flask_app.route('/order-by-deadline')
+def order_by_deadline():
+    tasks = Tasks.get_todo_tasks().order_by(Tasks.deadline.desc())
+    return flask.render_template('orderby.html', tasks=tasks, order='deadline')
