@@ -29,7 +29,12 @@ class Tasks(db.Model):
 
     @classmethod
     def set_task_as_complete(cls,task_id):
-        Tasks.query.get(task_id).is_done = True
+        cls.query.get(task_id).is_done = True
+        db.session.commit()
+
+    @classmethod
+    def delete_task(cls, task_id):
+        cls.query.filter_by(task_id=task_id).delete()
         db.session.commit()
 
     def __str__(self):

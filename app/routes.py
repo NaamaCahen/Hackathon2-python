@@ -20,3 +20,8 @@ def home():
 def complete(task_id):
     Tasks.set_task_as_complete(task_id)
     return flask.redirect('/')
+
+@flask_app.route('/delete/<int:task_id>')
+def delete_task(task_id):
+    Tasks.delete_task(task_id)
+    return flask.redirect('/')
