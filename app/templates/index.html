@@ -5,7 +5,10 @@
     <title>home</title>
 </head>
 <body>
+    {%block heading%}
     <h1>My TODO LIST</h1>
+    {% endblock %}
+    {%block addTask%}
     <form method="POST">
         {{ form.hidden_tag() }}
 
@@ -20,24 +23,25 @@
         {{form.is_urgent()}}
 
         {{form.add_button()}}
-    </form>
+    </form>{% endblock %}
     <form>
-        {% for task in tasks%}
-        <div style="border: black 2px solid">
-            <p>{{task}}</p>
-            <p>category: {{task.category}}</p>
-            <p>deadline: {{task.deadline}}</p>
-            <p>urgency: {{task.is_urgent}}</p>
-            <a href="{{url_for('complete',task_id=task.task_id)}}">DONE?</a>
-            <a href="{{url_for('delete_task',task_id=task.task_id)}}">DELETE</a>
-        </div>
-
-        {% endfor %}
-
+        {%block listOfTasks%}
+            {% for task in tasks%}
+            <div style="border: black 2px solid">
+                <p>{{task}}</p>
+                <p>category: {{task.category}}</p>
+                <p>deadline: {{task.deadline}}</p>
+                <p>urgency: {{task.is_urgent}}</p>
+                <a href="{{url_for('complete',task_id=task.task_id)}}">DONE?</a>
+                <a href="{{url_for('delete_task',task_id=task.task_id)}}">DELETE</a>
+            </div>
+            {% endfor %}
+        {% endblock %}
     </form>
 
     <a href="{{url_for('clear_all_tasks')}}">clear all tasks</a>
     <a href="{{url_for('show_done_tasks')}}">show done tasks</a>
+    <a href="{{url_for('order_by_urgency')}}">order by urgency</a>
 
 
 </body>

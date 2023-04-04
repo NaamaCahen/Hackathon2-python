@@ -40,3 +40,9 @@ def clear_all_tasks():
 def show_done_tasks():
     tasks = Tasks.get_done_tasks()
     return flask.render_template('done.html', tasks=tasks)
+
+
+@flask_app.route('/order-by-urgency')
+def order_by_urgency():
+    tasks = Tasks.get_todo_tasks().order_by(Tasks.is_urgent.desc())
+    return flask.render_template('orderby.html', tasks=tasks, order='urgency')
