@@ -12,7 +12,7 @@ def validate_deadline(form, field):
 class AddTodo(flask_wtf.FlaskForm):
     description = wtforms.StringField("add a task", [wtforms.validators.DataRequired()], )
     category = wtforms.StringField('category', [wtforms.validators.DataRequired()])
-    deadline = wtforms.DateField('deadline',
+    deadline = wtforms.DateField('deadline:',
                                  validators=[validate_deadline])  # add validator to check it is a future date
-    is_urgent = wtforms.IntegerField('is urgent')  # add validator to limit the number between 0 and 10
+    is_urgent = wtforms.IntegerField('is urgent (0 to 10)')  # add validator to limit the number between 0 and 10
     add_button = wtforms.SubmitField('add')

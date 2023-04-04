@@ -5,21 +5,46 @@
     <title>done</title>
 </head>
 <body>
-<h1>Done Tasks</h1>
-   <form>
-        {% for task in tasks %}
+ {%extends "index.html" %}
 
-                <div style="border: black 2px solid">
-                    <p>{{task}}</p>
-                    <p>category: {{task.category}}</p>
-                    <p>deadline: {{task.deadline}}</p>
-                    <p>urgency: {{task.is_urgent}}</p>
-                    <a href="{{url_for('complete',task_id=task.task_id)}}">DONE?</a>
-                    <a href="{{url_for('delete_task',task_id=task.task_id)}}">DELETE</a>
-                </div>
+    {%block heading%}
+        <h1>My Done Tasks</h1>
+        <h3>Bravo! :)</h3>
+    {% endblock %}
 
-        {% endfor %}
+    {%block addTask%}
+    {%endblock%}
 
-    </form>
+   {%block listOfTasks%}
+            {% for task in tasks%}
+            <div class="card p-3 m-2 border-primary shadow">
+                <h4>{{task}}</h4>
+                <p>category: {{task.category}}</p>
+                <p>deadline: {{task.deadline}}</p>
+                <p>urgency: {{task.is_urgent}}</p>
+                <a class="btn btn-danger" href="{{url_for('delete_task',task_id=task.task_id)}}">DELETE</a>
+            </div>
+            {% endfor %}
+        {% endblock %}
+
+    {%block home%}
+        <a href="{{url_for('home')}}">BACK HOME</a>
+    {% endblock %}
+<!--<h1>Done Tasks</h1>-->
+<!--   <form>-->
+<!--        {% for task in tasks %}-->
+
+<!--                <div style="border: black 2px solid">-->
+<!--                    <p>{{task}}</p>-->
+<!--                    <p>category: {{task.category}}</p>-->
+<!--                    <p>deadline: {{task.deadline}}</p>-->
+<!--                    <p>urgency: {{task.is_urgent}}</p>-->
+<!--                    <a href="{{url_for('complete',task_id=task.task_id)}}">DONE?</a>-->
+<!--                    <a href="{{url_for('delete_task',task_id=task.task_id)}}">DELETE</a>-->
+<!--                </div>-->
+
+<!--        {% endfor %}-->
+
+<!--    </form>-->
 </body>
 </html>

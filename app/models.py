@@ -18,6 +18,7 @@ class Tasks(db.Model):
     deadline = db.Column(db.Date)
     is_urgent = db.Column(db.Integer, default=5)
     is_done = db.Column(db.Boolean, default=False)
+    # user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
 
     def save_task_to_db(self):
         db.session.add(self)
@@ -49,3 +50,4 @@ class Tasks(db.Model):
 #     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 #     email = db.Column(db.String(64), unique=True)
 #     password = db.Column(db.String(64), nullable=False)
+#     tasks = db.relationship('Tasks', backref='tasks', lazy='dynamic')
