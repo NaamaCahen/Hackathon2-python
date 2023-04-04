@@ -25,3 +25,10 @@ def complete(task_id):
 def delete_task(task_id):
     Tasks.delete_task(task_id)
     return flask.redirect('/')
+
+@flask_app.route('/clear-all')
+def clear_all_tasks():
+    db.session.query(Tasks).delete()
+    db.session.commit()
+    return flask.redirect('/')
+
