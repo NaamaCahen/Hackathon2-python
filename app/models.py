@@ -24,8 +24,12 @@ class Tasks(db.Model):
         db.session.commit()
 
     @classmethod
-    def get_tasks(cls):
-        return cls.query.all()
+    def get_todo_tasks(cls):
+        return cls.query.filter_by(is_done=False)
+
+    @classmethod
+    def get_done_tasks(cls):
+        return cls.query.filter_by(is_done=True)
 
     @classmethod
     def set_task_as_complete(cls,task_id):
